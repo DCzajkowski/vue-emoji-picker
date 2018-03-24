@@ -19,16 +19,16 @@
     "vue": "vue/dist/vue.common.js"
   },
   "repository": {
-    "url": "git+package-git-url",
+    "url": "git+https://github.com/DCzajkowski/vue-emoji-picker.git",
     "type": "git"
   },
   "keywords": [],
   "author": "Dariusz Czajkowski <dare.czajkowski@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "package-repo-url/issues"
+    "url": "https://github.com/DCzajkowski/vue-emoji-picker/issues"
   },
-  "homepage": "package-repo-url#readme",
+  "homepage": "https://github.com/DCzajkowski/vue-emoji-picker#readme",
   "dependencies": {
     "vue": "^2.3.3"
   },

@@ -1,6 +1,6 @@
-import ExampleComponent from './Components/ExampleComponent.vue'
+import EmojiPicker from './Components/EmojiPicker.vue'
 
-const PackageName = {
+const EmojiPicker = {
     install(Vue, options = {}) {
         /**
          * Here comes your plugin's logic
@@ -18,16 +18,17 @@ const PackageName = {
          * - https://vuejs.org/v2/guide/plugins.html
          */
 
-        // Example component declaration:
-        Vue.component('example-component', ExampleComponent)
+        Vue.component('emoji-picker', EmojiPicker)
     },
 }
 
-if (typeof window !== 'undefined' && window.Vue) {
-    window.Vue.use(PackageName);
+if (typeof window !== 'undefined') {
+    if (window.Vue) {
+        window.Vue.use(EmojiPicker)
+    }
+
+    window.EmojiPicker = EmojiPicker
 }
 
-window.PackageName = PackageName
-
-export { PackageName }
-export default PackageName
+export { EmojiPicker }
+export default EmojiPicker
