@@ -8,7 +8,7 @@
     - [With an ES6 bundler (via npm)](#with-an-es6-bundler-via-npm)
         - [Use per component](#use-per-component)
         - [Use globally](#use-globally)
-    - [With a CDN](#with-a-cdn)
+    - [Using a CDN](#using-a-cdn)
 - [Usage](#usage)
     - [Very simple usage, without any CSS defined](#very-simple-usage-without-any-css-defined)
     - [CSS-styled example](#css-styled-example)
@@ -53,7 +53,7 @@ import { EmojiPickerPlugin } from 'vue-emoji-picker'
 Vue.use(EmojiPickerPlugin)
 ```
 
-### With a CDN
+### Using a CDN
 ```html
 <script>
     Vue.use(EmojiPicker)
