@@ -5,6 +5,7 @@ yarn-error.log
 dist/*
 !dist/.gitkeep
 dist-module/
+package-lock.json
 
 # Editor directories and files
 .idea

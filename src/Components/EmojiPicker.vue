@@ -45,7 +45,6 @@
                 },
             }
         },
-        template: '#emoji-picker',
         computed: {
             emojis() {
                 if (this.search) {
