@@ -30,5 +30,5 @@ if (typeof window !== 'undefined') {
     window.EmojiPicker = EmojiPicker
 }
 
-export { EmojiPicker: EmojiPickerComponent }
+export { EmojiPickerComponent as EmojiPicker }
 export default EmojiPickerComponent
