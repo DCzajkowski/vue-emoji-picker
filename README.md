@@ -123,11 +123,17 @@ As you may see, you have to declare some things yourself. Namely:
 ### CSS-styled example
 To see what is possible with the component, you can simply have a look at a demo available [here](https://codepen.io/DCzajkowski/pen/jzLzWp).
 
----
-
-### Available props
+## Available props
 - `search` _optional_ - If you are not using the search functionality, you can omit this one. It should be a model of the search passed from your `data`.
 - `emojiTable` _optional_ - You can overwrite the [default](https://github.com/DCzajkowski/vue-emoji-picker/blob/master/src/emojis.js) emoji table by providing your own.
+
+## Slots
+- `emoji-invoker`
+    - `events` - delares the `v-on:click` toggle of the picker box,
+- `emoji-picker`
+    - `emojis` - object of unicode emojis,
+    - `insert()` - method to be invoked when an emoji is clicked,
+    - `display` - object containting `x`, `y` and `visible` properties.
 
 ## License
 This work is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
