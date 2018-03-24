@@ -1,18 +1,14 @@
 import EmojiPickerComponent from './Components/EmojiPicker.vue'
 
-if (typeof window !== 'undefined') {
-    const EmojiPicker = {
-        install(Vue, options = {}) {
-            Vue.component('emoji-picker', EmojiPickerComponent)
-        },
-    }
-
-    if (window.Vue) {
-        window.Vue.use(EmojiPicker)
-    }
-
-    window.EmojiPicker = EmojiPicker
+const EmojiPickerPlugin = {
+    install(Vue, options = {}) {
+        Vue.component('emoji-picker', EmojiPickerComponent)
+    },
 }
 
-export { EmojiPickerComponent as EmojiPicker }
+if (typeof window !== 'undefined') {
+    window.EmojiPicker = EmojiPickerPlugin
+}
+
+export { EmojiPickerComponent as EmojiPicker, EmojiPickerPlugin }
 export default EmojiPickerComponent

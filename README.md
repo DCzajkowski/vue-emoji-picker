@@ -1,33 +1,62 @@
 # vue-emoji-picker
+## Table of contents
+- [Demo](#demo)
+- [Installation](#installation)
+    - [With npm](#with-npm)
+    - [With a CDN](#with-a-cdn)
+- [Import](#import)
+    - [With an ES6 bundler (via npm)](#with-an-es6-bundler-via-npm)
+        - [Use per component](#use-per-component)
+        - [Use globally](#use-globally)
+    - [With a CDN](#with-a-cdn)
+- [Usage](#usage)
+    - [Very simple usage, without any CSS defined](#very-simple-usage-without-any-css-defined)
+    - [CSS-styled example](#css-styled-example)
+- [Available props](#available-props)
+- [License](#license)
+
+
 ## Demo
-The live demo is available here: [link](link).
+The live demos arw available here:
+- [simpe html-only demo](https://codepen.io/DCzajkowski/pen/JLypqP),
+- [complete css-styled demo](https://codepen.io/DCzajkowski/pen/jzLzWp).
 
 ## Installation
-### With npm:
+### With npm
 ```bash
 npm i vue-emoji-picker --save
 ```
 
-### With a CDN:
+### With a CDN
 ```html
-<!-- In <head> -->
-<meta rel="stylesheet" href="https://unpkg.com/vue-emoji-picker/dist/vue-emoji-picker.css">
-<!-- In <body>, after Vue import -->
 <script src="https://unpkg.com/vue-emoji-picker/dist/vue-emoji-picker.js"></script>
 ```
 
-## Usage
+## Import
 ### With an ES6 bundler (via npm)
-In your index file
+#### Use per component
 ```js
-import CustomPackage from 'vue-emoji-picker'
-Vue.use(CustomPackage)
+import EmojiPicker from 'vue-emoji-picker'
+
+export default {
+    // ...
+    components: {
+        EmojiPicker,
+    },
+    // ...
+}
+```
+
+#### Use globally
+```js
+import { EmojiPickerPlugin } from 'vue-emoji-picker'
+Vue.use(EmojiPickerPlugin)
 ```
 
 ### With a CDN
 ```html
 <script>
-    Vue.use(CustomPackage)
+    Vue.use(EmojiPicker)
 
     new Vue({
         // ...
@@ -35,16 +64,70 @@ Vue.use(CustomPackage)
 </script>
 ```
 
+## Usage
+vue-emoji-picker is a slot-based component, to provide maximum flexibility.
+Since every ounce of html is created by a consumer (ie. you), you can customize every piece of the component as you wish.
+
+### Very simple usage, without any CSS defined
+You will need two things. A textarea (or an input), where emojis will be injected, and a component declaration. A simple example is provided below.
+```html
+<textarea v-model="input"></textarea>
+
+<emoji-picker @emoji="insert" :search="search">
+    <div class="emoji-invoker" slot="emoji-invoker" slot-scope="{ events }" v-on="events">
+        <button type="button">open</button>
+    </div>
+    <div slot="emoji-picker" slot-scope="{ emojis, insert, display }">
+        <div>
+            <div>
+                <input type="text" v-model="search">
+            </div>
+            <div>
+                <div v-for="(emojiGroup, category) in emojis">
+                    <h5>{{ category }}</h5>
+                    <div>
+                        <span
+                            v-for="(emoji, emojiName) in emojiGroup"
+                            @click="insert(emoji)"
+                            :title="emojiName"
+                        >{{ emoji }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</emoji-picker>
+```
+
+```js
+{
+    data() {
+        return {
+            input: '',
+            search: '',
+        }
+    },
+    methods: {
+        insert(emoji) {
+            this.input += emoji
+        },
+    },
+}
+```
+
+As you may see, you have to declare some things yourself. Namely:
+- `input` - a model for your input/textarea,
+- `search` - a model for the search box inside the component (optional),
+- `insert(emoji)` - a method responsible to put emojis into your input/textarea. Provided `emoji` is a string representation of the emoji to be inserted.
+
+### CSS-styled example
+To see what is possible with the component, you can simply have a look at a demo available [here](https://codepen.io/DCzajkowski/pen/jzLzWp).
+
 ---
 
-### Available props:
-//
-
-## Contents
-//
+### Available props
+- `search` _optional_ - If you are not using the search functionality, you can omit this one. It should be a model of the search passed from your `data`.
+- `emojiTable` _optional_ - You can overwrite the [default](https://github.com/DCzajkowski/vue-emoji-picker/blob/master/src/emojis.js) emoji table by providing your own.
 
 ## License
-//
-
-## Bugs
-//
+This work is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
