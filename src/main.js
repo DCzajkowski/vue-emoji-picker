@@ -1,4 +1,4 @@
-import EmojiPicker from './Components/EmojiPicker.vue'
+import EmojiPickerComponent from './Components/EmojiPicker.vue'
 
 const EmojiPicker = {
     install(Vue, options = {}) {
@@ -30,5 +30,5 @@ if (typeof window !== 'undefined') {
     window.EmojiPicker = EmojiPicker
 }
 
-export { EmojiPicker }
-export default EmojiPicker
+export { EmojiPicker: EmojiPickerComponent }
+export default EmojiPickerComponent
