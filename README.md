@@ -18,8 +18,9 @@
 
 ## Demo
 The live demos arw available here:
-- [simpe html-only demo](https://codepen.io/DCzajkowski/pen/JLypqP),
-- [complete css-styled demo](https://codepen.io/DCzajkowski/pen/jzLzWp).
+- [Simple, html-only demo](https://codepen.io/DCzajkowski/pen/JLypqP),
+- [Complete, css-styled demo](https://codepen.io/DCzajkowski/pen/jzLzWp),
+- [TailwindCSS-styled demo](https://codepen.io/DCzajkowski/pen/Brxvzj).
 
 ## Installation
 ### With npm
