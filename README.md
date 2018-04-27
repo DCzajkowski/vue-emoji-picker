@@ -1,4 +1,8 @@
-# vue-emoji-picker
+# Highly-customizable emoji picker for Vue 2
+<a href="https://www.npmjs.com/package/vue-emoji-picker"><img src="https://img.shields.io/npm/dt/vue-emoji-picker.svg" alt="Downloads"></a>
+<a href="https://www.npmjs.com/package/vue-emoji-picker"><img src="https://img.shields.io/npm/v/vue-emoji-picker.svg" alt="Version"></a>
+<a href="https://spdx.org/licenses/MIT.html"><img src="https://img.shields.io/npm/l/vue-emoji-picker.svg" alt="License"></a>
+
 ## Table of contents
 - [Demo](#demo)
 - [Installation](#installation)
