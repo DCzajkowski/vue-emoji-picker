@@ -17,7 +17,7 @@
 
 
 ## Demo
-The live demos arw available here:
+The live demos are available here:
 - [Simple, html-only demo](https://codepen.io/DCzajkowski/pen/JLypqP),
 - [Complete, css-styled demo](https://codepen.io/DCzajkowski/pen/jzLzWp),
 - [TailwindCSS-styled demo](https://codepen.io/DCzajkowski/pen/Brxvzj).
