@@ -88,11 +88,12 @@ You will need two things. A textarea (or an input), where emojis will be injecte
                 <input type="text" v-model="search">
             </div>
             <div>
-                <div v-for="(emojiGroup, category) in emojis">
+                <div v-for="(emojiGroup, category) in emojis" :key="category">
                     <h5>{{ category }}</h5>
                     <div>
                         <span
                             v-for="(emoji, emojiName) in emojiGroup"
+                            :key="emojiName"
                             @click="insert(emoji)"
                             :title="emojiName"
                         >{{ emoji }}</span>
