@@ -6,16 +6,16 @@
 ## Table of contents
 - [Demo](#demo)
 - [Installation](#installation)
-    - [With npm](#with-npm)
-    - [With a CDN](#with-a-cdn)
+  - [With npm](#with-npm)
+  - [With a CDN](#with-a-cdn)
 - [Import](#import)
-    - [With an ES6 bundler (via npm)](#with-an-es6-bundler-via-npm)
-        - [Use per component](#use-per-component)
-        - [Use globally](#use-globally)
-    - [Using a CDN](#using-a-cdn)
+  - [With an ES6 bundler (via npm)](#with-an-es6-bundler-via-npm)
+    - [Use per component](#use-per-component)
+    - [Use globally](#use-globally)
+  - [Using a CDN](#using-a-cdn)
 - [Usage](#usage)
-    - [Very simple usage, without any CSS defined](#very-simple-usage-without-any-css-defined)
-    - [CSS-styled example](#css-styled-example)
+  - [Very simple usage, without any CSS defined](#very-simple-usage-without-any-css-defined)
+  - [CSS-styled example](#css-styled-example)
 - [Available props](#available-props)
 - [License](#license)
 
@@ -44,11 +44,11 @@ npm i vue-emoji-picker --save
 import EmojiPicker from 'vue-emoji-picker'
 
 export default {
-    // ...
-    components: {
-        EmojiPicker,
-    },
-    // ...
+  // ...
+  components: {
+    EmojiPicker,
+  },
+  // ...
 }
 ```
 
@@ -61,11 +61,11 @@ Vue.use(EmojiPickerPlugin)
 ### Using a CDN
 ```html
 <script>
-    Vue.use(EmojiPicker)
+  Vue.use(EmojiPicker)
 
-    new Vue({
-        // ...
-    })
+  new Vue({
+    // ...
+  })
 </script>
 ```
 
@@ -79,45 +79,45 @@ You will need two things. A textarea (or an input), where emojis will be injecte
 <textarea v-model="input"></textarea>
 
 <emoji-picker @emoji="insert" :search="search">
-    <div slot="emoji-invoker" slot-scope="{ events }" v-on="events">
-        <button type="button">open</button>
-    </div>
-    <div slot="emoji-picker" slot-scope="{ emojis, insert, display }">
-        <div>
-            <div>
-                <input type="text" v-model="search">
-            </div>
-            <div>
-                <div v-for="(emojiGroup, category) in emojis" :key="category">
-                    <h5>{{ category }}</h5>
-                    <div>
-                        <span
-                            v-for="(emoji, emojiName) in emojiGroup"
-                            :key="emojiName"
-                            @click="insert(emoji)"
-                            :title="emojiName"
-                        >{{ emoji }}</span>
-                    </div>
-                </div>
-            </div>
+  <div slot="emoji-invoker" slot-scope="{ events }" v-on="events">
+    <button type="button">open</button>
+  </div>
+  <div slot="emoji-picker" slot-scope="{ emojis, insert, display }">
+    <div>
+      <div>
+        <input type="text" v-model="search">
+      </div>
+      <div>
+        <div v-for="(emojiGroup, category) in emojis" :key="category">
+          <h5>{{ category }}</h5>
+          <div>
+            <span
+              v-for="(emoji, emojiName) in emojiGroup"
+              :key="emojiName"
+              @click="insert(emoji)"
+              :title="emojiName"
+            >{{ emoji }}</span>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </emoji-picker>
 ```
 
 ```js
 {
-    data() {
-        return {
-            input: '',
-            search: '',
-        }
+  data() {
+    return {
+      input: '',
+      search: '',
+    }
+  },
+  methods: {
+    insert(emoji) {
+      this.input += emoji
     },
-    methods: {
-        insert(emoji) {
-            this.input += emoji
-        },
-    },
+  },
 }
 ```
 
@@ -135,11 +135,11 @@ To see what is possible with the component, you can simply have a look at a demo
 
 ## Slots
 - `emoji-invoker`
-    - `events` - delares the `v-on:click` toggle of the picker box,
+  - `events` - delares the `v-on:click` toggle of the picker box,
 - `emoji-picker`
-    - `emojis` - object of unicode emojis,
-    - `insert()` - method to be invoked when an emoji is clicked,
-    - `display` - object containting `x`, `y` and `visible` properties.
+  - `emojis` - object of unicode emojis,
+  - `insert()` - method to be invoked when an emoji is clicked,
+  - `display` - object containting `x`, `y` and `visible` properties.
 
 ## License
 This work is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
