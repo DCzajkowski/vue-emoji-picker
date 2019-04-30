@@ -79,7 +79,7 @@ You will need two things. A textarea (or an input), where emojis will be injecte
 <textarea v-model="input"></textarea>
 
 <emoji-picker @emoji="insert" :search="search">
-  <div slot="emoji-invoker" slot-scope="{ events }" v-on="events">
+  <div slot="emoji-invoker" slot-scope="{ events: { click: clickEvent } }" @click.stop="clickEvent">
     <button type="button">open</button>
   </div>
   <div slot="emoji-picker" slot-scope="{ emojis, insert, display }">
