@@ -21,6 +21,9 @@
 <script>
   import emojis from '../emojis'
 
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping
+  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
   export default {
     props: {
       search: {
@@ -54,7 +57,7 @@
             obj[category] = {}
 
             for (const emoji in this.emojiTable[category]) {
-              if (new RegExp(`.*${this.search}.*`).test(emoji)) {
+              if (new RegExp(`.*${escapeRegExp(this.search)}.*`).test(emoji)) {
                 obj[category][emoji] = this.emojiTable[category][emoji]
               }
             }
