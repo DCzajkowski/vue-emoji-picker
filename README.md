@@ -64,7 +64,7 @@ Vue.use(EmojiPickerPlugin)
 <script>
   new Vue({
     components: {
-      EmojiPicker,
+      EmojiPicker: window.EmojiPicker,
     },
   })
 </script>
