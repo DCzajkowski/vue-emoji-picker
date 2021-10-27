@@ -3,6 +3,8 @@ import EmojiPicker from '@/EmojiPicker.vue'
 
 type InstallableComponent = typeof EmojiPicker & PluginObject<any>
 
+export { EmojiPicker }
+
 export default /*#__PURE__*/((): InstallableComponent => {
   const installable = EmojiPicker as unknown as InstallableComponent
 
