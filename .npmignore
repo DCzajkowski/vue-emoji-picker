@@ -1,14 +1,12 @@
-.DS_Store
+# Project
+dev/
 node_modules/
-npm-debug.log
-yarn-error.log
-package-lock.json
-.babelrc
-webpack.config.js
+.browserslistrc
+babel.config.js
+rollup.config.js
+tsconfig.json
+yarn.lock
 
-# Editor directories and files
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+# Other
+.DS_Store
+yarn-error.log

@@ -2,22 +2,29 @@
   "name": "vue-emoji-picker",
   "description": "Simple Vue.js emoji picker with unicode characters",
   "version": "1.0.3",
-  "main": "dist-module/main.js",
+
+  "main": "dist/vue-emoji-picker.ssr.js",
+  "browser": "dist/vue-emoji-picker.esm.js",
+  "module": "dist/vue-emoji-picker.esm.js",
+  "unpkg": "dist/vue-emoji-picker.min.js",
+  "types": "dist/types/src/entry.esm.d.ts",
+
   "scripts": {
-    "prepublish": "npm run build && npm run browser-build",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "browser-build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o dist/vue-emoji-picker.css ] -e src/main.js | uglifyjs -c warnings=false -m > dist/vue-emoji-picker.js"
+    "serve": "vue-cli-service serve dev/serve.ts",
+    "prebuild": "rimraf ./dist",
+    "build": "cross-env NODE_ENV=production rollup --config rollup.config.js",
+    "build:ssr": "cross-env NODE_ENV=production rollup --config rollup.config.js --format cjs",
+    "build:es": "cross-env NODE_ENV=production rollup --config rollup.config.js --format es",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config rollup.config.js --format iife",
+    "postbuild": "rimraf ./dist/types/dev ./dist/types/src/entry.d.ts"
   },
-  "browserify": {
-    "transform": [
-      "babelify",
-      "vueify"
-    ]
-  },
-  "browser": {
-    "vue": "vue/dist/vue.common.js"
-  },
+
+  "files": [
+    "dist/*",
+    "src/**/*.vue",
+    "LICENSE",
+    "README.md"
+  ],
   "repository": {
     "url": "git+https://github.com/DCzajkowski/vue-emoji-picker.git",
     "type": "git"
@@ -29,35 +36,34 @@
     "url": "https://github.com/DCzajkowski/vue-emoji-picker/issues"
   },
   "homepage": "https://github.com/DCzajkowski/vue-emoji-picker#readme",
-  "typings": "src/@types",
+
+  "peerDependencies": {
+    "vue": "^2.6.14"
+  },
+
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",
-    "babel-plugin-transform-runtime": "^6.0.0",
-    "babel-preset-env": "^1.5.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.0.0",
-    "babel-runtime": "^6.0.0",
-    "babelify": "^7.2.0",
-    "browserify": "^14.4.0",
-    "browserify-hmr": "^0.3.1",
-    "cross-env": "^3.0.0",
-    "css-loader": "^0.25.0",
-    "envify": "^3.4.1",
-    "file-loader": "^0.9.0",
-    "http-server": "^0.11.1",
-    "node-sass": "^4.5.0",
-    "npm-run-all": "^2.3.0",
-    "phantomjs-prebuilt": "^2.1.3",
-    "proxyquireify": "^3.0.1",
-    "sass-loader": "^5.0.1",
-    "uglify-js": "^2.5.0",
-    "vue-loader": "^12.1.0",
-    "vue-template-compiler": "^2.6.7",
-    "vueify": "^9.4.1",
-    "watchify": "^3.11.1",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^3.2.0"
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-typescript": "^7.14.5",
+    "@rollup/plugin-alias": "^3.1.2",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-replace": "^2.4.2",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-typescript": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
+    "@zerollup/ts-transform-paths": "^1.7.18",
+    "cross-env": "^7.0.3",
+    "minimist": "^1.2.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.52.8",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-vue": "^5.1.9",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.0.3",
+    "vue": "^2.6.14",
+    "vue-template-compiler": "^2.6.14"
   }
 }

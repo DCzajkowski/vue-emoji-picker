@@ -646,4 +646,4 @@ export default {
     'small_orange_diamond': '🔸',
     'small_blue_diamond': '🔹',
   },
-}
+} as const

@@ -18,28 +18,40 @@
   </div>
 </template>
 
-<script>
-  import emojis from '../emojis'
+<script lang="ts">
+  import Vue, { PropType } from 'vue'
+  import emojis from './emojis'
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping
-  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
-  export default {
+  type Data = {
+    display: {
+      x: number
+      y: number
+      visible: boolean
+    }
+  }
+
+  type ClickOutsideElement = HTMLElement & { __vueClickOutside__: ((e: MouseEvent) => void) | null }
+
+  export default /*#__PURE__*/Vue.extend({
+    name: 'EmojiPicker',
     props: {
       search: {
-        type: String,
+        type: String as PropType<string>,
         required: false,
         default: '',
       },
       emojiTable: {
-        type: Object,
+        type: Object as PropType<Record<string, Record<string, string>>>,
         required: false,
         default() {
           return emojis
         },
       },
     },
-    data() {
+    data(): Data {
       return {
         display: {
           x: 0,
@@ -49,9 +61,9 @@
       }
     },
     computed: {
-      emojis() {
+      emojis(): Record<string, Record<string, string>> {
         if (this.search) {
-          const obj = {}
+          const obj: Record<string, Record<string, string>> = {}
 
           for (const category in this.emojiTable) {
             obj[category] = {}
@@ -74,18 +86,18 @@
       },
     },
     methods: {
-      insert(emoji) {
+      insert(emoji: string): void {
         this.$emit('emoji', emoji)
       },
-      toggle(e) {
+      toggle(e: MouseEvent): void {
         this.display.visible = ! this.display.visible
         this.display.x = e.clientX
         this.display.y = e.clientY
       },
-      hide() {
+      hide(): void {
         this.display.visible = false
       },
-      escape(e) {
+      escape(e: KeyboardEvent): void {
         if (this.display.visible === true && e.keyCode === 27) {
           this.display.visible = false
         }
@@ -93,13 +105,13 @@
     },
     directives: {
       'click-outside': {
-        bind(el, binding, vNode) {
+        bind(el: ClickOutsideElement, binding: any) {
           if (typeof binding.value !== 'function') {
             return
           }
 
           const bubble = binding.modifiers.bubble
-          const handler = (e) => {
+          const handler = (e: any) => {
             if (bubble || (! el.contains(e.target) && el !== e.target)) {
               binding.value(e)
             }
@@ -108,12 +120,14 @@
 
           document.addEventListener('click', handler)
         },
-        unbind(el, binding) {
-          document.removeEventListener('click', el.__vueClickOutside__)
+        unbind(el: ClickOutsideElement) {
+          if (el.__vueClickOutside__ !== null) {
+            document.removeEventListener('click', el.__vueClickOutside__)
 
-          el.__vueClickOutside__ = null
+            el.__vueClickOutside__ = null
+          }
         },
-      },
+      } as any,
     },
     mounted() {
       document.addEventListener('keyup', this.escape)
@@ -121,5 +135,5 @@
     destroyed() {
       document.removeEventListener('keyup', this.escape)
     },
-  }
+  })
 </script>
