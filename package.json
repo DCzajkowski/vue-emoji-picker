@@ -2,13 +2,11 @@
   "name": "vue-emoji-picker",
   "description": "Simple Vue.js emoji picker with unicode characters",
   "version": "1.0.3",
-
   "main": "dist/vue-emoji-picker.ssr.js",
   "browser": "dist/vue-emoji-picker.esm.js",
   "module": "dist/vue-emoji-picker.esm.js",
   "unpkg": "dist/vue-emoji-picker.min.js",
   "types": "dist/types/src/entry.esm.d.ts",
-
   "scripts": {
     "serve": "vue-cli-service serve dev/serve.ts",
     "prebuild": "rimraf ./dist",
@@ -18,7 +16,6 @@
     "build:unpkg": "cross-env NODE_ENV=production rollup --config rollup.config.js --format iife",
     "postbuild": "rimraf ./dist/types/dev ./dist/types/src/entry.d.ts"
   },
-
   "files": [
     "dist/*",
     "src/**/*.vue",
@@ -36,11 +33,9 @@
     "url": "https://github.com/DCzajkowski/vue-emoji-picker/issues"
   },
   "homepage": "https://github.com/DCzajkowski/vue-emoji-picker#readme",
-
   "peerDependencies": {
     "vue": "^2.6.14"
   },
-
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
@@ -59,8 +54,8 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.52.8",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-vue": "^5.1.9",
     "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-vue": "^5.1.9",
     "ttypescript": "^1.5.12",
     "typescript": "^4.0.3",
     "vue": "^2.6.14",
