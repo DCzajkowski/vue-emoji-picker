@@ -39,7 +39,6 @@ npm i vue-emoji-picker --save
 
 ## Import
 ### With an ES6 bundler (via npm)
-#### Use per component
 ```js
 import { EmojiPicker } from 'vue-emoji-picker'
 
@@ -50,13 +49,6 @@ export default {
   },
   // ...
 }
-```
-
-#### Use globally
-```js
-import EmojiPickerPlugin from 'vue-emoji-picker'
-
-Vue.use(EmojiPickerPlugin)
 ```
 
 ### Using a CDN
