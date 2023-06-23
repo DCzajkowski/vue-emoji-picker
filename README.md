@@ -124,7 +124,7 @@ To see what is possible with the component, you can simply have a look at a demo
 
 ## Available props
 - `search` _optional_ - If you are not using the search functionality, you can omit this one. It should be a model of the search passed from your `data`.
-- `emojiTable` _optional_ - You can overwrite the [default](https://github.com/DCzajkowski/vue-emoji-picker/blob/master/src/emojis.js) emoji table by providing your own.
+- `emojiTable` _optional_ - You can overwrite the [default](https://github.com/DCzajkowski/vue-emoji-picker/blob/master/src/emojis.ts) emoji table by providing your own.
 
 ## Slots
 - `emoji-invoker`
