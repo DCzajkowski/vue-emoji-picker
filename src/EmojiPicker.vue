@@ -69,7 +69,7 @@
             obj[category] = {}
 
             for (const emoji in this.emojiTable[category]) {
-              if (new RegExp(`.*${escapeRegExp(this.search)}.*`).test(emoji)) {
+              if (new RegExp(`.*${escapeRegExp(this.search.toLowerCase())}.*`).test(emoji)) {
                 obj[category][emoji] = this.emojiTable[category][emoji]
               }
             }
